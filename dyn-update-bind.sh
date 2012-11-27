@@ -24,10 +24,12 @@ get_ip_add() {
         fi
 }
 
-echo server mvuy.labs.lacnic.net
-echo zone i.labs.lacnic.net
-echo update delete $HOSTNAME.$ZONE
-echo update add $HOSTNAME.$ZONE $TTL A $(get_ip_add 4 wlan0)
-echo update add $HOSTNAME.$ZONE $TTL AAAA $(get_ip_add 6 wlan0)
-echo show
-echo send
+nsupdate <<EOF
+server mvuy.labs.lacnic.net
+zone i.labs.lacnic.net
+update delete $HOSTNAME.$ZONE
+update add $HOSTNAME.$ZONE $TTL A $(get_ip_add 4 wlan0)
+update add $HOSTNAME.$ZONE $TTL AAAA $(get_ip_add 6 wlan0)
+show
+send
+EOF
