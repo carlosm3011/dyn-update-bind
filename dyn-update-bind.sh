@@ -9,6 +9,7 @@ ZONE=i.labs.lacnic.net
 SERVER=mvuy.labs.lacnic.net
 HOSTNAME=$(hostname)
 TTL=60
+IFACE=wlan0
 ## end config
 
 get_ip_add() {
@@ -28,8 +29,8 @@ nsupdate <<EOF
 server mvuy.labs.lacnic.net
 zone i.labs.lacnic.net
 update delete $HOSTNAME.$ZONE
-update add $HOSTNAME.$ZONE $TTL A $(get_ip_add 4 wlan0)
-update add $HOSTNAME.$ZONE $TTL AAAA $(get_ip_add 6 wlan0)
+update add $HOSTNAME.$ZONE $TTL A $(get_ip_add 4 $IFACE)
+update add $HOSTNAME.$ZONE $TTL AAAA $(get_ip_add 6 $IFACE)
 show
 send
 EOF
