@@ -1,0 +1,10 @@
+// Zona dinamica actualizable con dyn-update-bind
+//
+
+zone "i.labs.lacnic.net" {
+	type master;
+	file "etc/db.i.labs.lacnic.net";
+	allow-update { 200.7.82.0/22; 2001:13c7:7001::/48; };
+	allow-transfer { 200.3.14.145; 2011:13c7:7002:4128::145; };
+};
+
