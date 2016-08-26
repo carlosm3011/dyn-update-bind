@@ -12,9 +12,12 @@ On the server: configure a dynamically updatable zone, you can google for instru
 Configuring the script:
 --
 Edit the top-level variables:
+
+```
 SERVER=<your DNS server>
 ZONE=<your dynamically updateable zone>
 HOSTNAME=<set your hostname>|$(hostname)
+```
 
 Running the script:
 --
