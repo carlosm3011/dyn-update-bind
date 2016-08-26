@@ -12,6 +12,9 @@ TTL=60
 IFACE=wlan0
 ## end config
 
+NSUPDATE=nsupdate
+## end vars
+
 get_ip_add() {
 
         if [ "$1" == "4" ]
@@ -25,7 +28,7 @@ get_ip_add() {
         fi
 }
 
-nsupdate <<EOF
+$NSUPDATE <<EOF
 server mvuy.labs.lacnic.net
 zone i.labs.lacnic.net
 update delete $HOSTNAME.$ZONE
